@@ -37,7 +37,10 @@ defmodule GoodreadsLibraryWeb.Router do
 
     scope "/" do
       pipe_through :browser
-      live_dashboard "/dashboard", metrics: GoodreadsLibraryWeb.Telemetry
+
+      live_dashboard "/dashboard",
+        metrics: GoodreadsLibraryWeb.Telemetry,
+        ecto_repos: [GoodreadsLibrary.Repo]
     end
   end
 end
