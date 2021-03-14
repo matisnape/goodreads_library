@@ -12,7 +12,7 @@ defmodule GoodreadsLibrary.Queries.Book do
 
   def get_by_remote_id(id) do
     Book
-    |> where(book_id: ^id)
+    |> where(remote_id: ^id)
     |> Repo.one()
   end
 

@@ -16,6 +16,5 @@ defmodule GoodreadsLibrary.Repo.Migrations.CreateBooks do
 
       timestamps()
     end
-
   end
 end
