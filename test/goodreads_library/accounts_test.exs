@@ -4,11 +4,44 @@ defmodule GoodreadsLibrary.AccountsTest do
   alias GoodreadsLibrary.Accounts
 
   describe "books" do
-    alias GoodreadsLibrary.Accounts.Book
+    alias GoodreadsLibrary.Book
 
-    @valid_attrs %{author: "some author", authorlf: "some authorlf", average_rating: 120.5, book_id: 42, bookshelves: [], date_added: ~D[2010-04-17], date_read: ~D[2010-04-17], pages_count: 42, publisher: "some publisher", title: "some title"}
-    @update_attrs %{author: "some updated author", authorlf: "some updated authorlf", average_rating: 456.7, book_id: 43, bookshelves: [], date_added: ~D[2011-05-18], date_read: ~D[2011-05-18], pages_count: 43, publisher: "some updated publisher", title: "some updated title"}
-    @invalid_attrs %{author: nil, authorlf: nil, average_rating: nil, book_id: nil, bookshelves: nil, date_added: nil, date_read: nil, pages_count: nil, publisher: nil, title: nil}
+    @valid_attrs %{
+      author: "some author",
+      authorlf: "some authorlf",
+      average_rating: 120.5,
+      book_id: 42,
+      bookshelves: [],
+      date_added: ~D[2010-04-17],
+      date_read: ~D[2010-04-17],
+      pages_count: 42,
+      publisher: "some publisher",
+      title: "some title"
+    }
+    @update_attrs %{
+      author: "some updated author",
+      authorlf: "some updated authorlf",
+      average_rating: 456.7,
+      book_id: 43,
+      bookshelves: [],
+      date_added: ~D[2011-05-18],
+      date_read: ~D[2011-05-18],
+      pages_count: 43,
+      publisher: "some updated publisher",
+      title: "some updated title"
+    }
+    @invalid_attrs %{
+      author: nil,
+      authorlf: nil,
+      average_rating: nil,
+      book_id: nil,
+      bookshelves: nil,
+      date_added: nil,
+      date_read: nil,
+      pages_count: nil,
+      publisher: nil,
+      title: nil
+    }
 
     def book_fixture(attrs \\ %{}) do
       {:ok, book} =

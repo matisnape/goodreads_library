@@ -1,0 +1,22 @@
+<h1>Show Shelf</h1>
+
+<%= if @live_action in [:edit] do %>
+  <%= live_modal @socket, GoodreadsLibraryWeb.ShelfLive.FormComponent,
+    id: @shelf.id,
+    title: @page_title,
+    action: @live_action,
+    shelf: @shelf,
+    return_to: Routes.shelf_show_path(@socket, :show, @shelf) %>
+<% end %>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @shelf.name %>
+  </li>
+
+</ul>
+
+<span><%= live_patch "Edit", to: Routes.shelf_show_path(@socket, :edit, @shelf), class: "button" %></span>
+<span><%= live_redirect "Back", to: Routes.shelf_index_path(@socket, :index) %></span>

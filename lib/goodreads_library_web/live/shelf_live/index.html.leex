@@ -1,0 +1,35 @@
+<h1>Listing Shelves</h1>
+
+<%= if @live_action in [:new, :edit] do %>
+  <%= live_modal @socket, GoodreadsLibraryWeb.ShelfLive.FormComponent,
+    id: @shelf.id || :new,
+    title: @page_title,
+    action: @live_action,
+    shelf: @shelf,
+    return_to: Routes.shelf_index_path(@socket, :index) %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="shelves">
+    <%= for shelf <- @shelves do %>
+      <tr id="shelf-<%= shelf.id %>">
+        <td><%= shelf.name %></td>
+
+        <td>
+          <span><%= live_redirect "Show", to: Routes.shelf_show_path(@socket, :show, shelf) %></span>
+          <span><%= live_patch "Edit", to: Routes.shelf_index_path(@socket, :edit, shelf) %></span>
+          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: shelf.id, data: [confirm: "Are you sure?"] %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= live_patch "New Shelf", to: Routes.shelf_index_path(@socket, :new) %></span>

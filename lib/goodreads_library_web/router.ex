@@ -18,6 +18,7 @@ defmodule GoodreadsLibraryWeb.Router do
     pipe_through :browser
 
     live "/", PageLive, :index
+    live "/books", BookLive.Index
   end
 
   # Other scopes may use custom stacks.

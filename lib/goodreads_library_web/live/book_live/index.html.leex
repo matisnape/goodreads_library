@@ -1,53 +1,35 @@
 <h1>Listing Books</h1>
 
-<%= if @live_action in [:new, :edit] do %>
-  <%= live_modal @socket, GoodreadsLibraryWeb.BookLive.FormComponent,
-    id: @book.id || :new,
-    title: @page_title,
-    action: @live_action,
-    book: @book,
-    return_to: Routes.book_index_path(@socket, :index) %>
-<% end %>
-
 <table>
   <thead>
     <tr>
+      <th>Title</th>
       <th>Author</th>
-      <th>Authorlf</th>
-      <th>Average rating</th>
-      <th>Book</th>
       <th>Bookshelves</th>
+      <th>Average rating</th>
       <th>Date added</th>
       <th>Date read</th>
       <th>Publisher</th>
       <th>Pages count</th>
-      <th>Title</th>
-
       <th></th>
     </tr>
   </thead>
   <tbody id="books">
     <%= for book <- @books do %>
       <tr id="book-<%= book.id %>">
+        <td><%= book.title %></td>
         <td><%= book.author %></td>
-        <td><%= book.authorlf %></td>
         <td><%= book.average_rating %></td>
-        <td><%= book.book_id %></td>
-        <td><%= book.bookshelves %></td>
+        <td>
+          <%= for shelf <- book.bookshelves do %>
+            <%= shelf %><br>
+          <% end %>
+        </td>
         <td><%= book.date_added %></td>
         <td><%= book.date_read %></td>
         <td><%= book.publisher %></td>
         <td><%= book.pages_count %></td>
-        <td><%= book.title %></td>
-
-        <td>
-          <span><%= live_redirect "Show", to: Routes.book_show_path(@socket, :show, book) %></span>
-          <span><%= live_patch "Edit", to: Routes.book_index_path(@socket, :edit, book) %></span>
-          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: book.id, data: [confirm: "Are you sure?"] %></span>
-        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<span><%= live_patch "New Book", to: Routes.book_index_path(@socket, :new) %></span>
