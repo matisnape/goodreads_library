@@ -1,35 +1,26 @@
 <h1>Listing Books</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Author</th>
-      <th>Bookshelves</th>
-      <th>Average rating</th>
-      <th>Date added</th>
-      <th>Date read</th>
-      <th>Publisher</th>
-      <th>Pages count</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody id="books">
+<div id="filter">
+  <div class="books">
     <%= for book <- @books do %>
-      <tr id="book-<%= book.id %>">
-        <td><%= book.title %></td>
-        <td><%= book.author %></td>
-        <td><%= book.average_rating %></td>
-        <td>
-          <%= for shelf <- book.bookshelves do %>
-            <%= shelf %><br>
-          <% end %>
-        </td>
-        <td><%= book.date_added %></td>
-        <td><%= book.date_read %></td>
-        <td><%= book.publisher %></td>
-        <td><%= book.pages_count %></td>
-      </tr>
+      <div class="card">
+        <div class="content">
+          <div class="title"><%= book.title %></div>
+          <div class="author"><%= book.author %></div>
+          <div>* <%= book.average_rating %></div>
+          <div class="details">
+            <%= for shelf <- book.bookshelves do %>
+              <div class="shelf"><%= shelf %></div><br>
+            <% end %>
+          </div>
+          <div class="subdetails">
+            <div>Added: <%= book.date_added %></div><br>
+            <div>Read: <%= book.date_read %></div><br>
+            <div>Publisher: <%= book.publisher %></div><br>
+            <div><%= book.pages_count %> pages</div><br>
+          </div>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
+</div>
