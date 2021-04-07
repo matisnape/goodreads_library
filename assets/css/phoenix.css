@@ -1,12 +1,7 @@
 /* Phoenix specific classes for generated files. */
 
 .phx-hero {
-  @apply text-center bg-cool-gray-200 rounded-md py-8 px-4 mt-0 mb-4;
-
-  h1 {
-    font-weight: 500;
-    margin-bottom: 1rem;
-  }
+  @apply text-center bg-gray-200 rounded-md py-8 px-4 mt-0 mb-4;
 
   p {
     font-weight: 300;
@@ -19,7 +14,7 @@
   }
 
   input[type="text"] {
-    @apply h-10 border border-cool-gray-300 rounded-md bg-white w-1/3 px-4 text-sm;
+    @apply h-10 border border-gray-300 rounded-md bg-white w-1/3 px-4 text-sm;
   }
 
   input[type="text"]:focus {

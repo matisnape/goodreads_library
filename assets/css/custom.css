@@ -1,5 +1,5 @@
 body {
-  @apply antialiased relative bg-cool-gray-200 font-sans;
+  @apply antialiased relative bg-gray-200 font-sans;
 }
 
 header {
@@ -11,19 +11,7 @@ header {
 }
 
 h1 {
-  @apply text-center text-cool-gray-900 font-extrabold text-4xl mb-8;
-}
-
-ul.examples {
-  @apply mt-8 text-2xl mx-auto max-w-xs list-disc;
-
-  li {
-    @apply mt-3;
-
-    a {
-      @apply underline;
-    }
-  }
+  @apply text-center text-gray-900 font-extrabold text-4xl mb-8;
 }
 
 .icon {
@@ -38,7 +26,7 @@ ul.examples {
   }
 
   .card {
-    @apply m-6 max-w-sm rounded bg-white overflow-hidden shadow-lg;
+    @apply m-6 w-80 rounded bg-white overflow-hidden shadow-lg;
 
     img {
       @apply w-full;
@@ -49,23 +37,31 @@ ul.examples {
     }
 
     .title {
-      @apply pt-2 pb-1 text-center text-cool-gray-900 font-bold text-xl;
+      @apply pt-2 pb-1 text-center text-gray-900 font-bold text-xl;
     }
 
     .author {
       @apply w-full text-center text-base font-medium text-gray-500 pt-2 pb-2;
     }
 
+    .rating {
+      @apply flex justify-center py-2 px-2 text-xl font-medium text-pink-900 space-x-1 text-center items-center
+    }
+
     .details {
-      @apply mt-2 mb-2 flex flex-wrap content-center;
+      @apply flex flex-wrap  mt-2 mb-3 justify-center;
 
       .shelf {
-        @apply bg-cool-gray-300 rounded-full px-3 py-1 text-sm font-semibold text-cool-gray-700;
+        @apply bg-gray-300 rounded-full px-3 py-2 text-sm font-semibold text-gray-700 text-center;
       }
     }
 
     .subdetails {
-      @apply text-cool-gray-700 font-semibold text-base;
+      @apply text-gray-700 font-semibold text-base;
+
+      /* div {
+        @apply pb-2;
+      } */
     }
   }
 
@@ -76,11 +72,11 @@ ul.examples {
       @apply flex items-baseline justify-around;
 
       select {
-        @apply appearance-none w-1/3 bg-cool-gray-200 border border-cool-gray-400 text-cool-gray-700 py-3 px-4 rounded-lg leading-tight font-semibold cursor-pointer;
+        @apply appearance-none w-1/3 bg-gray-200 border border-gray-400 text-gray-700 py-3 px-4 rounded-lg leading-tight font-semibold cursor-pointer;
       }
 
       select:focus {
-        @apply outline-none bg-cool-gray-200 border-cool-gray-500;
+        @apply outline-none bg-gray-200 border-gray-500;
       }
 
       .prices {
@@ -95,11 +91,11 @@ ul.examples {
         }
 
         label {
-          @apply inline-block border-t border-b border-cool-gray-400 bg-cool-gray-300 py-3 px-4 text-lg font-semibold leading-5;
+          @apply inline-block border-t border-b border-gray-400 bg-gray-300 py-3 px-4 text-lg font-semibold leading-5;
         }
 
         label:hover {
-          @apply bg-cool-gray-400 cursor-pointer;
+          @apply bg-gray-400 cursor-pointer;
         }
 
         label:first-of-type {

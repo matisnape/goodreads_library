@@ -28,6 +28,7 @@ module.exports = {
       '4xl': '2.25rem',
       '5xl': '3rem',
       '6xl': '4rem',
+      '9xl': '8rem'
     },
     colors: {
       transparent: 'transparent',
