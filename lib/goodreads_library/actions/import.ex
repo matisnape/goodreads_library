@@ -1,6 +1,4 @@
 defmodule GoodreadsLibrary.Actions.Import do
-  import Ecto.Changeset
-
   alias GoodreadsLibrary.Queries
   alias GoodreadsLibrary.Repo
   alias GoodreadsLibrary.Book
@@ -78,7 +76,8 @@ defmodule GoodreadsLibrary.Actions.Import do
     remote_book = remote_books |> Enum.find(fn book -> book.remote_id == remote_id end)
 
     changeset =
-      Queries.Book.get_by_remote_id(remote_id)
+      remote_id
+      |> Queries.Book.get_by_remote_id()
       |> Book.changeset(remote_book)
 
     case Repo.update(changeset) do
@@ -91,7 +90,8 @@ defmodule GoodreadsLibrary.Actions.Import do
   end
 
   defp delete_book_by_remote_id(remote_id) do
-    Queries.Book.get_by_remote_id(remote_id)
+    remote_id
+    |> Queries.Book.get_by_remote_id()
     |> Repo.delete()
     |> case do
       {:ok, book} ->
@@ -122,7 +122,7 @@ defmodule GoodreadsLibrary.Actions.Import do
       date_added: parse_date(book.date_added),
       date_read: parse_date(book.date_read) || parse_date(book.date_added),
       publisher: book.publisher,
-      pages_count: book.numberof_pages,
+      pages_count: book.numberof_pages |> parse_pages(),
       title: book.title
     }
   end
@@ -134,6 +134,9 @@ defmodule GoodreadsLibrary.Actions.Import do
   end
 
   defp parse_date(_), do: {:error, :unparseable}
+
+  defp parse_pages(""), do: 0
+  defp parse_pages(pages), do: String.to_integer(pages)
 
   defp sanitize(str) when is_binary(str), do: str |> String.replace("  ", " ")
 end
