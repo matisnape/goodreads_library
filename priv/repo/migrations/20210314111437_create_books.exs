@@ -13,6 +13,7 @@ defmodule GoodreadsLibrary.Repo.Migrations.CreateBooks do
       add :publisher, :string
       add :pages_count, :integer
       add :title, :string
+      add :read_count, :integer
 
       timestamps()
     end

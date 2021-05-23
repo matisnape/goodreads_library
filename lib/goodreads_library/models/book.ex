@@ -13,11 +13,12 @@ defmodule GoodreadsLibrary.Book do
     field :pages_count, :integer
     field :publisher, :string, default: "unknown"
     field :title, :string
+    field :read_count, :integer
 
     timestamps()
   end
 
-  @required_fields ~w(author authorlf average_rating remote_id bookshelves date_added date_read publisher title pages_count)a
+  @required_fields ~w(author authorlf average_rating remote_id bookshelves date_added date_read publisher title pages_count read_count)a
 
   @doc """
   Builds a changeset based on the `struct` and `params`.

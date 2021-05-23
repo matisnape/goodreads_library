@@ -8,12 +8,26 @@ defmodule GoodreadsLibrary.Queries.Book do
     Repo.all(Book)
   end
 
+  def list_shelves do
+    Book
+    |> select([b], b.bookshelves)
+    |> Repo.all()
+    |> List.flatten()
+    |> Enum.uniq()
+  end
+
   def get_book(id), do: Repo.one(Book, id)
 
   def get_by_remote_id(id) do
     Book
     |> where(remote_id: ^id)
     |> Repo.one()
+  end
+
+  def get_read do
+    Book
+    |> where([b], b.read_count >= 1)
+    |> Repo.all()
   end
 
   def from_shelves(books, shelves) do

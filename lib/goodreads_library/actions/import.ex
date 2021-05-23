@@ -123,7 +123,8 @@ defmodule GoodreadsLibrary.Actions.Import do
       date_read: parse_date(book.date_read) || parse_date(book.date_added),
       publisher: book.publisher,
       pages_count: book.numberof_pages |> parse_pages(),
-      title: book.title
+      title: book.title,
+      read_count: String.to_integer(book.read_count)
     }
   end
 
