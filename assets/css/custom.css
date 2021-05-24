@@ -22,7 +22,7 @@ h1 {
 
 #filter {
   .books {
-    @apply flex flex-wrap;
+    @apply flex flex-wrap items-stretch;
   }
 
   .card {
